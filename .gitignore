@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Except these things =)
+!nvim/
+nvim/undodir/
+!wezterm/
+
+# ...and of course this
+!.gitignore
