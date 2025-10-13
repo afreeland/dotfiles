@@ -5,6 +5,6 @@
 !nvim/
 nvim/undodir/
 !wezterm/
-
+!Brewfile
 # ...and of course this
 !.gitignore
