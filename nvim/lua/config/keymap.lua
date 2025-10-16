@@ -94,7 +94,7 @@ vim.keymap.set('n', '<leader>tf', function()
     end, 2000)
 end, { desc = 'Test: Run current file' })
 
-vim.keymap.set('n', '<leader>ta', ':TestSuite<CR>', { desc = 'Test: Run test suite' })
+vim.keymap.set('n', '<leader>ts', ':TestSuite<CR>', { desc = 'Test: Run test suite' })
 vim.keymap.set('n', '<leader>tl', ':TestLast<CR>', { desc = 'Test: Run last test' })
 vim.keymap.set('n', '<leader>tg', ':TestVisit<CR>', { desc = 'Test: Visit test file' })
 

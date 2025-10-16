@@ -42,6 +42,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         end
     end,
 })
+vim.keymap.set('n', '<leader>o', function()
+  vim.lsp.buf.code_action({
+    context = { only = { 'source.organizeImports' } },
+    apply = true,
+  })
+end, { noremap = true, silent = true, buffer = 0, desc = "Organize Imports" })
 
 -- Auto-coverage on Go file save (VS Code-like behavior)
 vim.api.nvim_create_autocmd("BufWritePost", {

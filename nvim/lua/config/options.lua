@@ -66,3 +66,9 @@ if vim.fn.executable('rg') == 1 then
     vim.o.grepformat = '%f:%l:%c:%m'
 end
 
+
+-- Code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99  -- Start with all folds open

@@ -30,12 +30,17 @@ return {
         -- Enhanced auto-import settings
         completeUnimported = true,
         usePlaceholders = true,
-        expandWorkspaceToModule = true,
         -- Better completion and import suggestions
         completionDocumentation = true,
         -- More helpful diagnostics
         diagnosticsDelay = "250ms",
         diagnosticsTrigger = "Save",
+        -- Key settings for smarter auto-import discovery:
+        matcher = "fuzzy",
+        -- Allow completion even with syntax errors
+        buildFlags = {"-tags=integration"},
+        -- Enable workspace-wide completion
+        expandWorkspaceToModule = true,
       }
-  }
+  },
 }
