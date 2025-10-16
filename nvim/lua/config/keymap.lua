@@ -135,3 +135,16 @@ vim.keymap.set('t', '<C-o>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<C-e>', '2<C-e>', { desc = 'Scroll down faster' })
 vim.keymap.set('n', '<C-y>', '2<C-y>', { desc = 'Scroll up faster' })
 
+-- Used to show function signature
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    { focusable = false }
+)
+
+-- Example of an autocmd to show signature help on CursorHoldI (in insert mode)
+vim.api.nvim_create_autocmd("CursorHoldI", {
+    group = vim.api.nvim_create_augroup("LspSignatureHelp", { clear = true }),
+    callback = function()
+        vim.lsp.buf.signature_help()
+    end,
+})
