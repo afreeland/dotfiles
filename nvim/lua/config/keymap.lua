@@ -148,3 +148,4 @@ vim.api.nvim_create_autocmd("CursorHoldI", {
         vim.lsp.buf.signature_help()
     end,
 })
+
