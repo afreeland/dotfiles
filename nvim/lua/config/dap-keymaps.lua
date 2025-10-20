@@ -1,6 +1,6 @@
 -- DAP Debugging keybindings
 vim.keymap.set('n', '<leader>dc', require('dap').continue, { desc = 'Debug: Start/Continue' })
-vim.keymap.set('n', '<leader>d<Space>', require('dap').continue, { desc = 'Debug: Continue to Next Breakpoint' })
+vim.keymap.set('n', '<leader>d', require('dap').continue, { desc = 'Debug: Continue to Next Breakpoint' })
 vim.keymap.set('n', '<leader>di', require('dap').step_into, { desc = 'Debug: Step Into' })
 vim.keymap.set('n', '<leader>do', require('dap').step_over, { desc = 'Debug: Step Over' })
 vim.keymap.set('n', '<leader>du', require('dap').step_out, { desc = 'Debug: Step Out' })
