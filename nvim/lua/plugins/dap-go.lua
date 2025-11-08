@@ -5,13 +5,13 @@ require('dap-go').setup {
   -- represents a dap configuration. For more details do:
   -- :help dap-configuration
   dap_configurations = {
-    {
-      -- Must be "go" or it will be ignored by the plugin
-      type = "go",
-      name = "Attach remote",
-      mode = "remote",
-      request = "attach",
-    },
+    -- {
+    --   type = "go",
+    --   name = "Attach remote (NVIM)",
+    --   mode = "local",
+    --   request = "attach",
+    --   processId = "${command:pickProcess}",
+    -- },
   },
   -- delve configurations
   delve = {
