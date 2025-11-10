@@ -5,8 +5,8 @@
 
 -- This actually just enables the lsp servers.
 -- The configuration is found in the lsp folder inside the nvim config folder,
--- so in ~.config/lsp/lua_ls.lua for lua_ls, for example.
-vim.lsp.enable({ 'lua_ls', 'gopls', 'rust-analyzer', 'pyright' })
+-- so in ~.config/lsp/lua_ls.lua for lua_ls, for example. (brew install pyright, brew install llvm)
+vim.lsp.enable({ 'lua_ls', 'gopls', 'rust-analyzer', 'pyright', 'clangd' })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
