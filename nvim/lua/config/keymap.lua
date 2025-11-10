@@ -135,3 +135,10 @@ vim.keymap.set('t', '<C-o>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<C-e>', '2<C-e>', { desc = 'Scroll down faster' })
 vim.keymap.set('n', '<C-y>', '2<C-y>', { desc = 'Scroll up faster' })
 
+-- Move current line or visual selection up/down (Normal mode)
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+
+-- Move visual selected lines up/down (Visual mode)
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
