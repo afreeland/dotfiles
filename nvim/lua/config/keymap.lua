@@ -97,6 +97,7 @@ end, { desc = 'Test: Run current file' })
 vim.keymap.set('n', '<leader>ta', ':TestSuite<CR>', { desc = 'Test: Run test suite' })
 vim.keymap.set('n', '<leader>tl', ':TestLast<CR>', { desc = 'Test: Run last test' })
 vim.keymap.set('n', '<leader>tg', ':TestVisit<CR>', { desc = 'Test: Visit test file' })
+vim.keymap.set('n', '<leader>ts', ':TestSuite<CR>', { desc = 'Test: Run test suite' })
 
 -- Terminal toggle (for sticky test terminal)
 vim.keymap.set('n', '<leader>te', function()
@@ -142,3 +143,17 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 -- Move visual selected lines up/down (Visual mode)
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Used to show function signature
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    { focusable = false }
+)
+
+-- Example of an autocmd to show signature help on CursorHoldI (in insert mode)
+vim.api.nvim_create_autocmd("CursorHoldI", {
+    group = vim.api.nvim_create_augroup("LspSignatureHelp", { clear = true }),
+    callback = function()
+        vim.lsp.buf.signature_help()
+    end,
+})

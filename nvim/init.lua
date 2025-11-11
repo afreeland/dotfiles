@@ -15,3 +15,5 @@ require('plugins.fyler') -- File explorer :fe (float) :fE (sticky left pane)
 require('plugins.vim-test') -- Quick testing :t (test nearest) :tf (test file) :te (toggle terminal)
 require('plugins.coverage') -- Code coverage (requires plenary)
 require('plugins.fugitive') -- Git functionality
+require('plugins.blink') -- LSP Autocompletion (imports) 
+require('plugins.context') -- Sticky function name
