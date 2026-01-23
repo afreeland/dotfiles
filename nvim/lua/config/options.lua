@@ -50,6 +50,9 @@ vim.o.termguicolors = true
 -- OS
 vim.o.clipboard = "unnamedplus"
 
+-- Mouse support for resizing windows
+vim.o.mouse = "a"
+
 vim.g.mapleader = " "
 
 -- Window Splitting

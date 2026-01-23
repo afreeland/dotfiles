@@ -50,3 +50,8 @@ vim.keymap.set('n', '<leader>dH', require('dap').disconnect, { desc = 'Debug: Di
 vim.keymap.set('n', '<leader>dA', require('dap').attach, { desc = 'Debug: Attach to Process' })
 vim.keymap.set('n', '<leader>dL', require('dap').list_breakpoints, { desc = 'Debug: List Breakpoints' })
 vim.keymap.set('n', '<leader>dM', require('dap').set_exception_breakpoints, { desc = 'Debug: Set Exception Breakpoints' })
+
+-- Reset our our UI view, typically gets jacked with quickfix/location list, grep, tree, etc.,
+vim.keymap.set('n', '<leader>dz', function()
+    require("dapui").open({ reset = true })
+end, { desc = "Reset DAP UI" })
