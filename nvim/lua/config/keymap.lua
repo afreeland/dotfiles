@@ -9,6 +9,9 @@ vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = 'Show hover info' })
 vim.keymap.set('n', '<leader>2', vim.lsp.buf.document_symbol, { desc = 'Find symbols in file (@)' })
 vim.keymap.set('n', '<leader>p', vim.lsp.buf.workspace_symbol, { desc = 'Find symbols in workspace' })
 
+-- Clear search highlighting
+vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true, desc = 'Clear search highlight' })
+
 
 
 
