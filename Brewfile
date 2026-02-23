@@ -5,6 +5,8 @@
 brew "neovim", args: ["HEAD"]     # nightly build
 brew "wezterm", args: ["HEAD"]    # nightly build (scrolling bug fix)
 brew "go"
+brew "dapper"
+brew "delve"
 
 # LSP servers
 brew "gopls"                      # Go LSP
@@ -21,3 +23,4 @@ brew "ripgrep"                    # rg - fast grep
 brew "jq"                         # JSON processor
 brew "ykman"                      # YubiKey cli 
 brew "curl"
+brew "hurl"                       # Curl but from text files
