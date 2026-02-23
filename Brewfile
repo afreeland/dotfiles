@@ -19,4 +19,5 @@ brew "ripgrep"                    # rg - fast grep
 
 # Optional but useful
 brew "jq"                         # JSON processor
+brew "ykman"                      # YubiKey cli 
 brew "curl"
