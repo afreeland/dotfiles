@@ -12,10 +12,6 @@ vim.keymap.set('n', '<leader>p', vim.lsp.buf.workspace_symbol, { desc = 'Find sy
 -- Clear search highlighting
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true, desc = 'Clear search highlight' })
 
-
-
-
-
 vim.keymap.set('n', '<leader>rn', function()
     if vim.bo.modifiable then
         vim.lsp.buf.rename()
@@ -109,7 +105,7 @@ vim.keymap.set('n', '<leader>te', function()
         vim.cmd('q') -- Close current terminal window
         return
     end
-    
+
     -- Try to find existing terminal buffer
     local buffers = vim.api.nvim_list_bufs()
     for _, buf in ipairs(buffers) do
@@ -127,7 +123,7 @@ vim.keymap.set('n', '<leader>te', function()
             return
         end
     end
-    
+
     -- No terminal found, create one
     vim.cmd('terminal')
 end, { desc = 'Toggle test terminal' })
@@ -160,3 +156,23 @@ vim.api.nvim_create_autocmd("CursorHoldI", {
         vim.lsp.buf.signature_help()
     end,
 })
+
+-- AI Context Copy - grab code with file:line context
+vim.api.nvim_create_user_command('CopyAI', function(opts)
+    local filepath = vim.fn.expand('%')
+    local start_line = opts.line1
+    local end_line = opts.line2
+    local lines = vim.fn.getline(start_line, end_line)
+    local code = table.concat(lines, '\n')
+
+    local location = start_line == end_line
+        and filepath .. ':' .. start_line
+        or filepath .. ':' .. start_line .. '-' .. end_line
+
+    vim.fn.setreg('+', location .. '\n' .. code)
+    print('📋 ' .. location)
+end, { range = true })
+
+-- Keybinding: <leader>ai in visual/normal mode
+vim.keymap.set('v', '<leader>ai', ':CopyAI<CR>', { silent = true, desc = 'Copy for AI' })
+vim.keymap.set('n', '<leader>ai', ':CopyAI<CR>', { silent = true, desc = 'Copy for AI' })
