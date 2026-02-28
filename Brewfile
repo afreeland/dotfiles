@@ -8,6 +8,10 @@ brew "go"
 brew "dapper"
 brew "delve"
 
+tap "dart-lang/dart"
+brew "dart"
+
+
 # LSP servers
 brew "gopls"                      # Go LSP
 brew "lua-language-server"        # Lua LSP
