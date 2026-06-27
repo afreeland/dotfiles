@@ -143,17 +143,11 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
--- Used to show function signature
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    { focusable = false }
-)
-
 -- Example of an autocmd to show signature help on CursorHoldI (in insert mode)
 vim.api.nvim_create_autocmd("CursorHoldI", {
     group = vim.api.nvim_create_augroup("LspSignatureHelp", { clear = true }),
     callback = function()
-        vim.lsp.buf.signature_help()
+        vim.lsp.buf.signature_help({ focusable = false })
     end,
 })
 

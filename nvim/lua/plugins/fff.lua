@@ -1,8 +1,12 @@
 vim.pack.add({ 'https://github.com/dmtrKovalenko/fff.nvim' })
 
+-- If this doesn't work you can also
+-- packadd fff.nvim | lua require("fff.download").download_or_build_binary()
 vim.api.nvim_create_autocmd('PackChanged', {
-    callback = function(event)
-        if event.data.updated then
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == 'fff.nvim' and (kind == 'install' or kind == 'update') then
+            if not ev.data.active then vim.cmd.packadd('fff.nvim') end
             require('fff.download').download_or_build_binary()
         end
     end,
@@ -10,12 +14,12 @@ vim.api.nvim_create_autocmd('PackChanged', {
 
 -- the plugin will automatically lazy load
 vim.g.fff = {
-    lazy_sync = true, -- start syncing only when the picker is open
+    lazy_sync = true,       -- start syncing only when the picker is open
     debug = {
-        enabled = false, -- disable debug to prevent E5560 errors during vimgrep
+        enabled = false,    -- disable debug to prevent E5560 errors during vimgrep
         show_scores = true, -- keep scores in picker UI
     },
-    notify = false, -- disable all notifications to prevent E5560 errors
+    notify = false,         -- disable all notifications to prevent E5560 errors
 }
 
 vim.keymap.set(

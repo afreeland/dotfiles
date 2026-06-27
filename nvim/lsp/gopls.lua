@@ -27,6 +27,12 @@ return {
         staticcheck = true,
         vulncheck = "Imports",
         gofumpt = true,
+        -- Code lenses (run via `grx` on the relevant line). gopls ships most
+        -- of these disabled by default, so opt in to the useful ones.
+        codelenses = {
+            test = true,       -- run/debug above func TestXxx / BenchmarkXxx
+            vulncheck = true,  -- full vuln scan (go.mod); run_govulncheck is legacy
+        },
         -- Enhanced auto-import settings
         completeUnimported = true,
         usePlaceholders = true,

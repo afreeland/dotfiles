@@ -14,6 +14,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
+-- Refresh code lenses (test/govulncheck) so `grx` has something to run.
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+    pattern = "*.go",
+    callback = function()
+        vim.lsp.codelens.refresh({ bufnr = 0 })
+    end,
+})
+
 -- Auto-coverage on Go file open (VS Code-like behavior)
 vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = "*.go",

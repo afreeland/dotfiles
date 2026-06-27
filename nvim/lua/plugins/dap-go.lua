@@ -36,7 +36,7 @@ require('dap-go').setup {
     -- passing build flags using args is ineffective, as those are
     -- ignored by delve in dap mode.
     -- avaliable ui interactive function to prompt for arguments get_arguments
-    build_flags = {},
+    build_flags = { "-gcflags=all=-N -l" },
     -- whether the dlv process to be created detached or not. there is
     -- an issue on delve versions < 1.24.0 for Windows where this needs to be
     -- set to false, otherwise the dlv server creation will fail.
