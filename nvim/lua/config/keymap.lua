@@ -98,6 +98,34 @@ vim.keymap.set('n', '<leader>tl', ':TestLast<CR>', { desc = 'Test: Run last test
 vim.keymap.set('n', '<leader>tg', ':TestVisit<CR>', { desc = 'Test: Visit test file' })
 vim.keymap.set('n', '<leader>ts', ':TestSuite<CR>', { desc = 'Test: Run test suite' })
 
+-- vim-test's gotest runner emits -run, never -bench, so it silently "passes"
+-- without executing any benchmark iterations. These bindings shell out directly.
+local function run_benchmark(pattern)
+    local pkg = './' .. vim.fn.fnamemodify(vim.fn.expand('%:h'), ':.')
+    local cmd = string.format(
+        'go test -bench=%s -run=^$ -benchmem -benchtime=2s %s', pattern, pkg)
+    vim.cmd('botright split | resize 15 | terminal ' .. cmd)
+    vim.cmd('startinsert')
+end
+
+-- Run the single benchmark enclosing the cursor.
+vim.keymap.set('n', '<leader>tb', function()
+    -- Walk backwards to the enclosing `func BenchmarkXxx`. 'n' = don't move cursor.
+    local line = vim.fn.search('func \\(Benchmark\\w\\+\\)', 'bcnW')
+    if line == 0 then
+        vim.notify('No enclosing Benchmark function found', vim.log.levels.WARN)
+        return
+    end
+    local bench = vim.fn.matchstr(vim.fn.getline(line), 'func \\zsBenchmark\\w\\+')
+    -- Anchor the regex so BenchmarkFoo doesn't also match BenchmarkFooBar.
+    run_benchmark('^' .. bench .. '$')
+end, { desc = 'Test: Run benchmark under cursor' })
+
+-- Run all benchmarks in the current package.
+vim.keymap.set('n', '<leader>tB', function()
+    run_benchmark('.')
+end, { desc = 'Test: Run all benchmarks in package' })
+
 -- Terminal toggle (for sticky test terminal)
 vim.keymap.set('n', '<leader>te', function()
     -- Check if we're already in a terminal window

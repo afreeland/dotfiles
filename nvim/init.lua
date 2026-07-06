@@ -12,6 +12,7 @@ require('plugins.dap')        -- Debug Adapter Protocol for debugging/breakdpoin
 require('plugins.dap-go')     -- The Golang Adapter for DAP
 require('config.dap-keymaps') -- Some useful maps debugging
 require('plugins.fyler')      -- File explorer :fe (float) :fE (sticky left pane)
+require('plugins.flash')      -- Faster navigation with `s` and treesitter nodes with `<leader>s`
 require('plugins.vim-test')   -- Quick testing :t (test nearest) :tf (test file) :te (toggle terminal)
 require('plugins.coverage')   -- Code coverage (requires plenary)
 require('plugins.fugitive')   -- Git functionality

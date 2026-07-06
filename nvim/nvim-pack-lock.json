@@ -8,6 +8,10 @@
       "rev": "f6af8353c3cb02ddde1588f24f27ff8b3a4037cf",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
+    "flash.nvim": {
+      "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
+      "src": "https://github.com/folke/flash.nvim"
+    },
     "fugitive-gitlab.vim": {
       "rev": "3584cf7e607ba7822f991d407a8d780e05aae287",
       "src": "https://github.com/shumphrey/fugitive-gitlab.vim.git"
