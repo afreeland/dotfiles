@@ -7,7 +7,30 @@
 -- The configuration is found in the lsp folder inside the nvim config folder,
 -- so in ~.config/lsp/lua_ls.lua for lua_ls, for example. (brew install pyright, brew install llvm)
 -- vtsls + eslint are installed via brew (vtsls, vscode-langservers-extracted).
-vim.lsp.enable({ 'lua_ls', 'gopls', 'rust-analyzer', 'pyright', 'clangd', 'dart', 'vtsls', 'eslint' })
+-- zeek-language-server: cargo install --git https://github.com/bbannier/zeek-language-server.git
+vim.filetype.add({
+  extension = {
+    zeek = 'zeek',
+    bro = 'zeek',
+  },
+})
+
+local lsp_servers = {
+  'lua_ls',
+  'gopls',
+  'rust-analyzer',
+  'pyright',
+  'clangd',
+  'dart',
+  'vtsls',
+  'eslint',
+}
+
+if vim.fn.executable('zeek-language-server') == 1 then
+  table.insert(lsp_servers, 'zeek-language-server')
+end
+
+vim.lsp.enable(lsp_servers)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)

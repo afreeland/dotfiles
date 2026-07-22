@@ -3,6 +3,11 @@
 
 # Core development tools
 brew "neovim"
+# Dotfiles sync via git; ~/.local/share/nvim/ does NOT. After git pull on a new machine:
+#   :checkhealth vim.pack
+#   :TSInstall! go lua python javascript typescript hurl --sync
+#   :lua require('fff.download').download_or_build_binary()
+# Full error → fix guide: ~/.config/nvim/TROUBLESHOOTING.md
 brew "wezterm"
 brew "go"
 #brew "dapper"
