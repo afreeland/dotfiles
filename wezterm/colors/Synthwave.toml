@@ -1,0 +1,36 @@
+[colors]
+foreground = "#00e5e5"
+background = "#000000"
+cursor_bg = "#ff3bff"
+cursor_fg = "#000000"
+cursor_border = "#ff3bff"
+selection_fg = "#000000"
+selection_bg = "#00d9d9"
+scrollbar_thumb = "#4a4a4a"
+split = "#b84dff"
+
+ansi = [
+  "#1a1a1a",
+  "#ff3b3b",
+  "#3bff9e",
+  "#ffd866",
+  "#b84dff",
+  "#ff3bff",
+  "#00d9d9",
+  "#00e5e5",
+]
+brights = [
+  "#4a4a4a",
+  "#ff6b6b",
+  "#7bffc4",
+  "#ffe699",
+  "#d07bff",
+  "#ff7bff",
+  "#6bffff",
+  "#ffffff",
+]
+
+[metadata]
+name = "Synthwave"
+author = "ported from Konsole Synthwave.colorscheme"
+origin_url = "https://github.com/liamluthor/initial-setup"

@@ -15,7 +15,10 @@ config.initial_rows = 28
 
 -- or, changing the font size and color scheme.
 config.font_size = 22
-config.color_scheme = 'Tokyo Night'
+
+-- Schemes live in ~/.config/wezterm/colors/*.toml
+-- Flip to 'Tokyo Night' (or any built-in) when you want a break from neon.
+config.color_scheme = 'Synthwave'
 
 -- Clean, intuitive keybindings for Linux/macOS consistency
 config.keys = {
