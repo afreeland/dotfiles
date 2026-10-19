@@ -53,3 +53,9 @@ require('dap-go').setup {
   },
 }
 
+-- NOTE: launch.json (.vscode/) is loaded in plugins/dap.lua, which owns the
+-- single source of truth for it — it has a JSONC comment-stripper and applies
+-- outputMode='remote'. Do NOT call load_launchjs() here too: it appends without
+-- deduping, so a second call stacks duplicate "Launch fleetd" entries in the
+-- <leader>dc picker.
+

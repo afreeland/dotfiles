@@ -34,9 +34,9 @@ return {
     validate = 'on',
     packageManager = nil, -- auto-detect (npm here)
     useESLintClass = false,
-    experimental = { useFlatConfig = false }, -- set true if repo is flat-config only
+    experimental = { useFlatConfig = true }, -- gamma ships eslint.config.cjs (flat config)
     codeActionOnSave = {
-      enable = false, -- flip to true + mode='all' to fix-on-save
+      enable = true, -- fixable lint + import organization on save; sequenced before prettier in autocmd.lua
       mode = 'all',
     },
     format = false, -- let prettier/eslint --fix own formatting, not the LSP

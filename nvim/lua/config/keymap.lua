@@ -12,6 +12,24 @@ vim.keymap.set('n', '<leader>p', vim.lsp.buf.workspace_symbol, { desc = 'Find sy
 -- Clear search highlighting
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true, desc = 'Clear search highlight' })
 
+-- Snippet tabstop navigation (native vim.snippet, used by LSP snippet completions).
+-- gopls expands function calls into snippets where each argument is a tabstop.
+-- <Tab>/<S-Tab> jump between them; the placeholder is select-mode highlighted so
+-- typing replaces it. Falls through to a literal <Tab> when no snippet is active.
+vim.keymap.set({ 'i', 's' }, '<Tab>', function()
+    if vim.snippet.active({ direction = 1 }) then
+        return '<Cmd>lua vim.snippet.jump(1)<CR>'
+    end
+    return '<Tab>'
+end, { expr = true, silent = true, desc = 'Snippet: jump to next tabstop' })
+
+vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
+    if vim.snippet.active({ direction = -1 }) then
+        return '<Cmd>lua vim.snippet.jump(-1)<CR>'
+    end
+    return '<S-Tab>'
+end, { expr = true, silent = true, desc = 'Snippet: jump to previous tabstop' })
+
 vim.keymap.set('n', '<leader>rn', function()
     if vim.bo.modifiable then
         vim.lsp.buf.rename()
