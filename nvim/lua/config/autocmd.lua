@@ -1,6 +1,25 @@
 vim.api.nvim_create_user_command('Restart', function()
     vim.cmd('source ~/.config/nvim/init.lua')
-end, {})
+end, { force = true })
+
+-- Make JSON objects and arrays foldable without creating manual folds.
+local function enable_json_folds()
+    vim.wo.foldenable = true
+    vim.wo.foldmethod = 'expr'
+    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo.foldlevel = 99
+end
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'json',
+    group = vim.api.nvim_create_augroup('json_folds', { clear = true }),
+    callback = enable_json_folds,
+})
+
+-- Also handle re-sourcing the config while a JSON buffer is already open.
+if vim.bo.filetype == 'json' then
+    enable_json_folds()
+end
 
 
 -- Filetypes that this repo formats with Prettier (per its .prettierrc), NOT the

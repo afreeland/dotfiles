@@ -20,6 +20,10 @@
       "rev": "9561907a8f9fdce5f4d6a3f349270477f3578e33",
       "src": "https://github.com/A7Lavinraj/fyler.nvim.git"
     },
+    "markview.nvim": {
+      "rev": "ecc5a8867daa1856f8bcc5fdbceca8f5a5ce5f5d",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
     "mini.icons": {
       "rev": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428",
       "src": "https://github.com/nvim-mini/mini.icons"

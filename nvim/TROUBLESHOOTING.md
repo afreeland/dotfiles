@@ -167,7 +167,7 @@ installed by hand — no dotfile change required.
 
 ```vim
 :checkhealth vim.pack
-:TSInstall! go lua python javascript typescript hurl --sync
+:TSInstall! go lua python javascript typescript hurl markdown markdown_inline html --sync
 :lua require('fff.download').download_or_build_binary()
 ```
 

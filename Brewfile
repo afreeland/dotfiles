@@ -31,6 +31,7 @@ brew "tree-sitter"                # For nvim-treesitter
 # Essential CLI tools
 brew "git"
 brew "ripgrep"                    # rg - fast grep
+brew "fd"                         # fd - fast find
 
 # Optional but useful
 brew "jq"                         # JSON processor
@@ -40,3 +41,4 @@ brew "hurl"                       # Curl but from text files
 brew "zsh"
 brew "tree-sitter-cli"
 brew "wireguard-tools"
+brew "mermaid-cli"                # Mermaid for charts

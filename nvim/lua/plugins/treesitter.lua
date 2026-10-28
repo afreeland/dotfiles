@@ -14,6 +14,10 @@ require('nvim-treesitter').setup({
     },
 })
 
+-- The current nvim-treesitter API installs missing parsers with install(),
+-- rather than setup().ensure_installed. HTML supports Markdown comments.
+require('nvim-treesitter').install({ 'markdown', 'markdown_inline', 'html' })
+
 require('nvim-treesitter-textobjects').setup({
     select = { lookahead = true },
     move = { set_jumps = true },

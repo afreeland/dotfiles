@@ -189,11 +189,17 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
--- Example of an autocmd to show signature help on CursorHoldI (in insert mode)
+-- Show signature help on insert-mode idle only when an attached server supports it.
 vim.api.nvim_create_autocmd("CursorHoldI", {
     group = vim.api.nvim_create_augroup("LspSignatureHelp", { clear = true }),
-    callback = function()
-        vim.lsp.buf.signature_help({ focusable = false })
+    callback = function(args)
+        local clients = vim.lsp.get_clients({
+            bufnr = args.buf,
+            method = 'textDocument/signatureHelp',
+        })
+        if #clients > 0 then
+            vim.lsp.buf.signature_help({ focusable = false })
+        end
     end,
 })
 
